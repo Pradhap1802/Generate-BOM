@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sale_order_form_view_inherit_status_pd_dynamic_bom" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit.status.pd.dynamic.bom</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header/field[@name='state']" position="after">
+                <field name="manufacturing_status" widget="statusbar" statusbar_visible="not_started,in_progress,done"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

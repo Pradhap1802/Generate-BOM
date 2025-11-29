@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="sale_order_line_form_view_inherit_pd_dynamic_bom" model="ir.ui.view">
+            <field name="name">sale.order.line.form.inherit.dynamic.bom</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+               <xpath expr="//field[@name='order_line']/list/field[@name='product_template_id']" position="after">
+                    <field name="length_in_inches" column_invisible="parent.allow_custom_product_on_so == False"/>
+                    <field name="width_in_inches" column_invisible="parent.allow_custom_product_on_so == False"/>
+                </xpath>
+
+
+                <xpath expr="//field[@name='order_line']/list/field[@name='product_uom_qty']" position="replace">
+                    <field name="product_uom_qty"/>
+                </xpath>
+
+
+            </field>
+        </record>
+    </data>
+</odoo>

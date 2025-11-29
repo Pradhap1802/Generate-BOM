@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="mrp_bom_form_view_inherit_pd_dynamic_bom" model="ir.ui.view">
+        <field name="name">mrp.bom.form.inherit.pd.dynamic.bom</field>
+        <field name="model">mrp.bom</field>
+        <field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='product_tmpl_id']" position="after">
+                <field name="custom_product_creation_setting" invisible="1"/>
+                <field name="is_custom" invisible="not custom_product_creation_setting"/>
+            </xpath>
+            <xpath expr="//field[@name='bom_line_ids']/list/field[@name='product_qty']" position="after">
+                <field name="length_in_inches" column_invisible="not parent.is_custom"/>
+                <field name="width_in_inches" column_invisible="not parent.is_custom"/>
+                <field name="apply_formula" column_invisible="not parent.is_custom"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
